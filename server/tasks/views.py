@@ -17,14 +17,14 @@ class TaskViewset(viewsets.ModelViewSet):
     def create(self, request, *args, **kwargs):
         params = request.data if request.data else request.POST
         category = params.get('task_category', None)
+        if not params.get('task'):
+            return JsonResponse({"message": "Please Provide Task ..."}, status=400)
         kwargs = {
-            'task':  params.get('task', ''),
+            'name':  params.get('task', ''),
             'is_completed':  params.get('is_completed', False),
             'created_by': request.user.id
         }
 
-        if not kwargs.get('task'):
-            return JsonResponse({"message": "Please Provide Task ..."}, status=400)
         if category:
             kwargs['task_category'] = Category.objects.get(id=category)
 
@@ -32,7 +32,7 @@ class TaskViewset(viewsets.ModelViewSet):
             task = self.get_serializer(data=kwargs)
             task.is_valid(raise_exception=True)
             task_obj = task.save()
-            return JsonResponse({"message": "Todo Task Added Successfully...", "data": task.data}, status=200)
+            return JsonResponse({"message": " Task Added Successfully...", "data": task.data}, status=200)
         except Exception as e:
             return JsonResponse({"message": str(e)}, status=400)
 
@@ -41,25 +41,25 @@ class TaskViewset(viewsets.ModelViewSet):
             params = request.data if request.data else request.POST
             if not params.get('task'):
                 return JsonResponse({"message": "Please Provide task ..."}, status=400)
-            todo = Todo.objects.get(pk=pk)
-            todo.task = params.get('task', '')
+            task = Tasks.objects.get(pk=pk)
+            task.name = params.get('task', '')
             category = params.get('task_category', None)
             if category:
-                todo.task_category = Category.objects.get(id=category)
-            todo.is_completed = params.get('is_completed', False)
-            todo.modified_by = request.user
-            todo.save()
-            tododata = self.serializer_class(todo).data
-            return JsonResponse({"message": "Todo Task Updated Successfully...", "data": tododata}, status=200)
+                task.task_category = Category.objects.get(id=category)
+            task.is_completed = params.get('is_completed', False)
+            task.modified_by = request.user
+            task.save()
+            taskdata = self.serializer_class(task).data
+            return JsonResponse({"message": " Task Updated Successfully...", "data": taskdata}, status=200)
         except Exception as e:
             return JsonResponse({"message": str(e)}, status=400)
     
     def destroy(self, request, pk=None, *args, **kwargs):
         try:
-            todo = Todo.objects.filter(id=pk).first()
-            if todo:
-                todo.delete()
-                return JsonResponse({"message": "Todo Task deleted Successfully...", "data": {}}, status=200)
+            task = Tasks.objects.filter(id=pk).first()
+            if task:
+                task.delete()
+                return JsonResponse({"message": " Task deleted Successfully...", "data": {}}, status=200)
             else:
                 return JsonResponse({"message": "No Such Task...", "data": {}}, status=404)
         except Exception as e:
