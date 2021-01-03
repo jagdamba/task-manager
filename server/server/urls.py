@@ -20,7 +20,7 @@ from tasks import urls as t_urls
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api', include(t_urls)),
+    path('api/', include(t_urls)),
 
 ]
 
