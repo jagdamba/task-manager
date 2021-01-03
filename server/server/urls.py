@@ -15,8 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from tasks import url
+from django.urls.conf import include
+from tasks import urls as t_urls
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api', include(t_urls)),
+
 ]
+
