@@ -28,7 +28,7 @@ const AllTodo = () => {
     return (
         <div className="container">
             <div className="container p-3 my-3 bg-primary text-white">
-                <h1>TODO's</h1>
+                <h1>Tasks</h1>
             </div>
             <div className="btn-block pull-right">
                 <Row>

@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { Row, Col } from 'reactstrap';
+import { Row, Col, Button } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from "react-redux";
 import { getAllBuckets, addTodos, updateTodos, getAllTask } from "../actions/userActions";
+import CustomNavbar from '../components/Navbar';
 
 const TodoForm = (props) => {
     const [todoId, setId] = useState(props.match.params.id);
@@ -51,37 +52,26 @@ const TodoForm = (props) => {
 
     return (
         <div className="container">
-            <div className="container p-3 my-3 bg-primary text-white">
-                <h1>Add Todo</h1>
-            </div>
-            <div className="btn-block pull-right">
-                <Row>
-                    <Col md={10}>
-                    </Col>
-                    <Col md={2}>
-                        <Link to="/" className="btn btn-info">ALL Todo's</Link>
-                    </Col>
-                </Row>
-            </div>
-            <div>
+            <CustomNavbar title={'TodoForm'}/>
+            <div className='mt-3'>
                 <form>
                     <div className="form-group">
                         <label for="exampleFormControlInput1">Task</label>
                         <input name="task" type="textarea" className="form-control" id="exampleFormControlInput1" defaultValue={task} onChange={(e) => setTask(e.target.value)} required />
                     </div>
                     <div className="form-group">
-                        <label for="exampleFormControlSelect1">Bucket</label>
+                        <label for="exampleFormControlSelect1">Category</label>
                         <Row>
                             <Col md={8}>
                                 <select name="task_bucket" className="form-control" id="exampleFormControlSelect1" value={selectedbucket} onChange={(e) => setBucket(e.target.value)}>
-                                    <option value={0}>Select Bucket</option>
+                                    <option value={0}>Select Category</option>
                                     {allbuckets && allbuckets.map((obj, i) => {
                                         return (<option key={i} value={obj.id}>{obj.name}</option>)
                                     })}
                                 </select>
                             </Col>
                             <Col md={4}>
-                                <Link to="/bucket" className="btn btn-primary">+ Buckets</Link>
+                                <Link to="/bucket" className="btn btn-primary"> <i className='fa fa-plus '></i> </Link>
                             </Col>
                         </Row>
                     </div>
@@ -89,7 +79,17 @@ const TodoForm = (props) => {
                         <input type="checkbox" className="form-check-input" id="exampleCheck1" checked={iscompleted} onClick={(e) => setCompleted(!iscompleted)} />
                         <label name="is_completed" className="form-check-label" for="exampleCheck1" >Mark Completed</label>
                     </div>
-                    <button className="btn btn-primary" onClick={(e) => addUpdateTodo(e)}>{todoId ? 'Update' : 'Add'}</button>
+                    <Button
+                        color="info"
+                        type="button"
+                        size="sm"
+                        className="form-control mt-2 mr-2 mb-0 bg-facebook text-white"
+                        block
+                        style={{ fontSize: "24px" }}
+                        onClick={(e) => addUpdateTodo(e)}
+                    >
+                        {todoId ? 'Update' : 'Add'}
+                    </Button>
                 </form>
             </div>
         </div >
