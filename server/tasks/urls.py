@@ -4,8 +4,8 @@ from . import views
 
 
 router = routers.DefaultRouter()
-router.register(r'task',views.TaskViewset)
-router.register(r'category',views.CategoryViewset)
+router.register(r'todo',views.TaskViewset)
+router.register(r'bucket',views.CategoryViewset)
 router.register(r'login',views.LoginViewset)
 
 urlpatterns = [
