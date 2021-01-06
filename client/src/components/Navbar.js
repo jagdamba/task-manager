@@ -13,7 +13,7 @@ const CustomNavbar = (props) => {
             </button>
             <div class="collapse navbar-collapse" id="navbarText">
                 <ul class="navbar-nav mr-auto " >
-                    <p className=" text-white  mt-3" style={{ fontSize: '20px', marginLeft: '300%' ,textDecoration:'underline'}}>{props.title} </p>
+                    <p className=" text-white  mt-4" style={{ fontSize: '30px', marginLeft: '150%' ,textDecoration:'underline',fontWeight:'500'}}>{props.title} </p>
                 </ul>
                 <span class="navbar-text">
                     <ul class="navbar-nav mr-auto">
@@ -21,7 +21,7 @@ const CustomNavbar = (props) => {
                             <Link to="/" className='text-info' style={{ fontSize: '20px', }} >Tasks</Link>
                         </li>
                         <li class="nav-item  mt-2">
-                            <Link to="/" className='text-info' style={{ fontSize: '20px', }} >Categories</Link>
+                            <Link to="/categories" className='text-info' style={{ fontSize: '20px', }} >Categories</Link>
                         </li>
                     </ul>
                 </span>

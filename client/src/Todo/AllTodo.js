@@ -35,8 +35,8 @@ const AllTodo = () => {
                     <Col md={8}>
                     </Col>
                     <Col md={4}>
-                        <Link to="/todo" className="btn btn-primary mr-1">+ Todo</Link>
-                        <Link to="/allbucket" className="btn btn-primary">View Buckets</Link>
+                        <Link to="/task" className="btn btn-primary mr-1">+ Todo</Link>
+                        <Link to="/categories" className="btn btn-primary">View Buckets</Link>
                     </Col>
                 </Row>
             </div>
@@ -52,7 +52,7 @@ const AllTodo = () => {
                                 <div className="card-body">Completed : {obj.is_completed  ? "Yes" : "No"}</div>
                             </Col>
                             <Col md={2} className="mt-3">
-                                <Link to={`/todo/${obj.id}`} className="btn btn-info">Edit</Link>{' '}
+                                <Link to={`/task/${obj.id}`} className="btn btn-info">Edit</Link>{' '}
                                 <Button color="warning"  onClick={() => deleteTodo(obj.id)}>Delete</Button>
                             </Col>
                         </Row>

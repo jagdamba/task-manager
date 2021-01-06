@@ -52,7 +52,7 @@ const TodoForm = (props) => {
 
     return (
         <div className="container">
-            <CustomNavbar title={'TodoForm'}/>
+            <CustomNavbar title={'TaskForm'}/>
             <div className='mt-3'>
                 <form>
                     <div className="form-group">
@@ -71,7 +71,7 @@ const TodoForm = (props) => {
                                 </select>
                             </Col>
                             <Col md={4}>
-                                <Link to="/bucket" className="btn btn-primary"> <i className='fa fa-plus '></i> </Link>
+                                <Link to="/category" className="btn btn-info"> <i className='fa fa-plus '></i> </Link>
                             </Col>
                         </Row>
                     </div>

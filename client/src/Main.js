@@ -10,11 +10,11 @@ const Main = () => (
   <main>
     <Switch>
       <Route exact path='/' component={Todo} />
-      <Route exact path='/todo' component={TodoForm} />
-      <Route exact path='/todo/:id' component={TodoForm} />
-      <Route exact path='/allbucket' component={Bucket} />
-      <Route exact path='/bucket' component={BucketForm} />
-      <Route exact path='/bucket/:id' component={BucketForm} />
+      <Route exact path='/task' component={TodoForm} />
+      <Route exact path='/task/:id' component={TodoForm} />
+      <Route exact path='/categories' component={Bucket} />
+      <Route exact path='/category' component={BucketForm} />
+      <Route exact path='/category/:id' component={BucketForm} />
       <Route path="*" component={Todo} />
     </Switch>
   </main>

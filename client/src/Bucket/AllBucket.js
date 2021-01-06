@@ -31,7 +31,7 @@ const AllBucket = () => {
                     <Col md={8}>
                     </Col>
                     <Col md={4}>
-                        <Link to="/bucket" className="btn btn-primary mr-1">+ Bucket</Link>
+                        <Link to="/category" className="btn btn-primary mr-1">+ Bucket</Link>
                         <Link to="/" className="btn btn-primary">View Todo's</Link>
                     </Col>
                 </Row>
@@ -47,7 +47,7 @@ const AllBucket = () => {
                             <div className="card-body">created By : {obj.created_name}</div>
                         </Col>
                         <Col md={2} className="mt-3">
-                            <Link to={`/bucket/${obj.id}`} className="btn btn-info">Edit</Link>{' '}
+                            <Link to={`/category/${obj.id}`} className="btn btn-info">Edit</Link>{' '}
 
                         </Col>
                     </Row>

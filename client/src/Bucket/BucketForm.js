@@ -47,9 +47,9 @@ const BucketForm = (props) => {
           <Col md={7}>
           </Col>
           <Col md={5}>
-            <Link to="/allbucket" className="btn btn-info mr-1">ALL Bucket's</Link>
+            <Link to="/categories" className="btn btn-info mr-1">ALL Bucket's</Link>
             <Link to="/" className="btn btn-info mr-1">ALL Todo's</Link>
-            <Link to="/todo" className="btn btn-info"> + Todo</Link>
+            <Link to="/task" className="btn btn-info"> + Todo</Link>
           </Col>
         </Row>
       </div>
