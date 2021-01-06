@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { Row, Col } from 'reactstrap';
+import { Row, Col ,Button} from 'reactstrap';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from "react-redux";
 import { addBuckets, updateBuckets } from "../actions/userActions";
+import CustomNavbar from '../components/Navbar';
+
 
 const BucketForm = (props) => {
   const [bucketId, setId] = useState(props.match.params.id);
@@ -39,27 +41,26 @@ const BucketForm = (props) => {
 
   return (
     <div className="container">
-      <div className="container p-3 my-3 bg-primary text-white">
-        <h1>Add Bucket</h1>
-      </div>
-      <div className="btn-block pull-right">
-        <Row>
-          <Col md={7}>
-          </Col>
-          <Col md={5}>
-            <Link to="/categories" className="btn btn-info mr-1">ALL Bucket's</Link>
-            <Link to="/" className="btn btn-info mr-1">ALL Todo's</Link>
-            <Link to="/task" className="btn btn-info"> + Todo</Link>
-          </Col>
-        </Row>
-      </div>
-      <div>
+        <CustomNavbar title={'CategoryForm'}/>
+
+      <div  className='mt-4'>  
         <form>
           <div className="form-group">
-            <label for="exampleFormControlInput1">Bucket Name</label>
+            <label for="exampleFormControlInput1">Category Name</label>
             <input name="bucket" type="text" className="form-control" id="exampleFormControlInput1" defaultValue={name} onChange={(e) => setBucketName(e.target.value)} required />
           </div>
-          <button className="btn btn-primary" onClick={(e) => addUpdateBucket(e)}>{bucketId ? 'Update' : 'Add'}</button>
+          {/* <button className="btn btn-primary" onClick={(e) => addUpdateBucket(e)}>{bucketId ? 'Update' : 'Add'}</button> */}
+
+          <Button
+                        color="info"
+                        type="button"
+                        size="sm"
+                        className="form-control mt-2 mr-2 mb-0 bg-facebook text-white"
+                        block
+                        style={{ fontSize: "24px" }}
+                        onClick={(e) => addUpdateBucket(e)}                    >
+                        {bucketId ? 'Update' : 'Add'}
+                    </Button>
         </form>
       </div>
     </div >

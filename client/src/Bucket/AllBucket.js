@@ -1,9 +1,11 @@
 import React, { useEffect } from 'react';
 import { Row, Col, Button } from 'reactstrap';
 import { Link } from 'react-router-dom'
-import { loginApi, getAllBuckets} from "../actions/userActions"
+import { loginApi, getAllBuckets } from "../actions/userActions"
 import { useDispatch, useSelector } from "react-redux";
-import moment from 'moment'
+import moment from 'moment';
+import CustomNavbar from '../components/Navbar';
+
 
 const AllBucket = () => {
     const state = useSelector(state => state)
@@ -23,38 +25,28 @@ const AllBucket = () => {
 
     return (
         <div className="container">
-            <div className="container p-3 my-3 bg-primary text-white">
-                <h1>Bucket's</h1>
-            </div>
-            <div className="btn-block pull-right">
-                <Row>
-                    <Col md={8}>
-                    </Col>
-                    <Col md={4}>
-                        <Link to="/category" className="btn btn-primary mr-1">+ Bucket</Link>
-                        <Link to="/" className="btn btn-primary">View Todo's</Link>
-                    </Col>
-                </Row>
-            </div>
+            <CustomNavbar title={'AllTasks'} />
             {  buckets.bucketlist && buckets.bucketlist.map((obj, i) => {
-
-                return (<div className="card m-1" key={i}>
-                    <Row>
-                        <Col md={10}>
-                            <div className="card-body">Name : {obj.name}</div>
-                            <div className="card-body">ID : {obj.id}</div>
-                            <div className="card-body">created on : {moment(obj.created).format('DD-MM-YYYY hh:MM a')}</div>
-                            <div className="card-body">created By : {obj.created_name}</div>
-                        </Col>
-                        <Col md={2} className="mt-3">
-                            <Link to={`/category/${obj.id}`} className="btn btn-info">Edit</Link>{' '}
-
-                        </Col>
-                    </Row>
-                </div>)
+                return (
+                    <div className="card  mt-2 m-1" key={i}>
+                        <Row>
+                            <Col xs={9} md={10}>
+                                <div className=" " > <span className='ml-2'>
+                                </span>
+                                    <span style={{ fontSize: '30px', fontWeight: '400', color: '#3a5e95' }} className='mr-2'>{obj.name}  </span ></div>
+                                <div className="m-2"> <span className='mr-2'>< i className='fa fa-user mr-2'></i>{obj.created_name}</span>
+                                    <span style={{ fontSize: '12px', fontWeight: '600', color: '#3a5e95' }} >
+                                        {'( '}  {moment(obj.created).format('DD-MM-YYYY hh:MM a')}{'  )'}</span>
+                                </div>
+                            </Col>
+                            <Col xs={3} md={2} className="mt-3">
+                                <Link to={`/category/${obj.id}`} className="btn btn-secondary mr-2 mb-3"><i className='fa fa-edit'></i></Link>{' '}
+                            </Col>
+                        </Row>
+                    </div>
+                )
             })}
         </div >
-
     );
 }
 

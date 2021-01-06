@@ -5,12 +5,14 @@ import { loginApi, getAllTask, getAllBuckets } from "../actions/userActions"
 import { useDispatch, useSelector } from "react-redux";
 import { deleteTodos } from '../actions/userActions';
 import moment from 'moment';
+import CustomNavbar from '../components/Navbar';
+
 
 const AllTodo = () => {
     const state = useSelector(state => state)
     const dispatch = useDispatch();
     const todo = useSelector(state => state.todo)
-    
+
     useEffect(() => {
         if (!state.isloggedIn) {
             dispatch(loginApi());
@@ -20,40 +22,33 @@ const AllTodo = () => {
         }
         dispatch(getAllBuckets());
     }, [])
-    
+
     const deleteTodo = (id) => {
         dispatch(deleteTodos(id))
     }
 
     return (
         <div className="container">
-            <div className="container p-3 my-3 bg-primary text-white">
-                <h1>Tasks</h1>
-            </div>
-            <div className="btn-block pull-right">
-                <Row>
-                    <Col md={8}>
-                    </Col>
-                    <Col md={4}>
-                        <Link to="/task" className="btn btn-primary mr-1">+ Todo</Link>
-                        <Link to="/categories" className="btn btn-primary">View Buckets</Link>
-                    </Col>
-                </Row>
-            </div>
+            <CustomNavbar title={'AllTasks'} />
             {todo.todolist && todo.todolist.map((obj, i) => {
                 return (
-                    <div className="card m-1" key={i}>
+                    <div className="card  mt-2 m-1" key={i}>
                         <Row>
-                            <Col md={10}>
-                                <div className="card-body">Task : {obj.name}</div>
-                                <div className="card-body">Bucket : {obj.category_name}</div>
-                                <div className="card-body">Created On : {moment(obj.created).format('DD-MM-YYYY hh:MM a')}</div>
-                                <div className="card-body">Created By : {obj.created_name}</div>
-                                <div className="card-body">Completed : {obj.is_completed  ? "Yes" : "No"}</div>
+                            <Col xs={9} md={10}>
+                                <div className=" " > <span className='ml-1'>
+                                    {obj.is_completed ?
+                                        <i className='fa fa-check-circle text-success  ' ></i>
+                                        : <i className='fa fa-times-circle text-danger  ' ></i>}</span>
+                                    <span style={{ fontSize: '30px', fontWeight: '400', color: '#3a5e95' }} className='mr-2'>{obj.name}  </span ></div>
+                                <div className="m-2"><span className='mr-1'>< i className='fa fa-filter mr-2'></i></span>{obj.category_name}</div>
+                                <div className="m-2"> <span className='mr-2'>< i className='fa fa-user mr-2'></i>{obj.created_name}</span>
+                                    <span style={{ fontSize: '12px', fontWeight: '600', color: '#3a5e95' }} >
+                                        {'( '}  {moment(obj.created).format('DD-MM-YYYY hh:MM a')}{'  )'}</span>
+                                </div>
                             </Col>
-                            <Col md={2} className="mt-3">
-                                <Link to={`/task/${obj.id}`} className="btn btn-info">Edit</Link>{' '}
-                                <Button color="warning"  onClick={() => deleteTodo(obj.id)}>Delete</Button>
+                            <Col xs={3} md={2} className="mt-3">
+                                <Link to={`/task/${obj.id}`} className="btn btn-secondary mr-2 mb-3"><i className='fa fa-edit'></i></Link>{' '}
+                                <Button className='mb-3' color="danger" onClick={() => deleteTodo(obj.id)}><i className='fa fa-trash'></i></Button>
                             </Col>
                         </Row>
                     </div>
