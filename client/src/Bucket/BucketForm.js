@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Row, Col ,Button} from 'reactstrap';
+import { Row, Col, Button } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from "react-redux";
 import { addBuckets, updateBuckets } from "../actions/userActions";
@@ -41,26 +41,32 @@ const BucketForm = (props) => {
 
   return (
     <div className="container">
-        <CustomNavbar title={'CategoryForm'}/>
-
-      <div  className='mt-4'>  
+      <CustomNavbar title={'CategoryForm'} />
+      <div className='mt-4'>
         <form>
           <div className="form-group">
-            <label for="exampleFormControlInput1">Category Name</label>
-            <input name="bucket" type="text" className="form-control" id="exampleFormControlInput1" defaultValue={name} onChange={(e) => setBucketName(e.target.value)} required />
+            <label
+              for="exampleFormControlInput1">
+              Category Name
+               </label>
+            <input
+              name="bucket"
+              type="text"
+              className="form-control"
+              id="exampleFormControlInput1"
+              defaultValue={name}
+              onChange={(e) => setBucketName(e.target.value)} required />
           </div>
-          {/* <button className="btn btn-primary" onClick={(e) => addUpdateBucket(e)}>{bucketId ? 'Update' : 'Add'}</button> */}
-
           <Button
-                        color="info"
-                        type="button"
-                        size="sm"
-                        className="form-control mt-2 mr-2 mb-0 bg-facebook text-white"
-                        block
-                        style={{ fontSize: "24px" }}
-                        onClick={(e) => addUpdateBucket(e)}                    >
-                        {bucketId ? 'Update' : 'Add'}
-                    </Button>
+            color="info"
+            type="button"
+            size="sm"
+            className="form-control mt-2 mr-2 mb-0 bg-facebook text-white"
+            block
+            style={{ fontSize: "24px" }}
+            onClick={(e) => addUpdateBucket(e)}>
+            {bucketId ? 'Update' : 'Add'}
+          </Button>
         </form>
       </div>
     </div >

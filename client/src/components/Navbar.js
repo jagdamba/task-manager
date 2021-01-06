@@ -15,7 +15,7 @@ const CustomNavbar = (props) => {
                 <NavbarToggler onClick={toggleNavbar} className="mr-2" />
                 <Collapse isOpen={!collapsed} navbar>
                     <ul class="navbar-nav mr-auto " >
-                        <p className=" text-white  mt-4" style={{ fontSize: '30px', marginLeft: '100%', fontWeight: '500' }}>{props.title} </p>
+                        <p className=" text-white  mt-4" style={{ fontSize: '30px', fontWeight: '500' }}>{props.title} </p>
                     </ul>
                     <Nav navbar>
                         <NavItem className='mt-2 mr-3'>
