@@ -38,7 +38,7 @@ const TodoForm = (props) => {
         e.preventDefault();
         const data = {
             "task": task,
-            "task_bucket": selectedbucket,
+            "task_category": selectedbucket,
             "is_completed": iscompleted
         }
 
@@ -78,7 +78,6 @@ const TodoForm = (props) => {
                                     {allbuckets && allbuckets.map((obj, i) => {
                                         return (<option key={i} value={obj.id}>{obj.name}</option>)
                                     })}
-                                    <option>1</option>
                                 </select>
                             </Col>
                             <Col md={4}>

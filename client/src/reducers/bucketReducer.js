@@ -26,14 +26,7 @@ const bucketReducer = (state = [], action) => {
             });
 
         case 'DELETEBUCKET':
-            console.log(state)
-            return state.bucketlist.filter((bucket) => bucket.id !== action.payload);
-            // // return Object.assign({}, state, {
-            // //     bucketlist: state.bucketlist.filter((bucket) => {
-            // //         return bucket.id !== action.payload
-            // //     })
-
-            // })
+            return state
 
         default:
             return state

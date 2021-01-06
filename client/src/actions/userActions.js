@@ -166,25 +166,3 @@ export const updateBuckets = (data, id) => {
     }
 }
 
-
-export const deleteBuckets = (id) => {
-    debugger;
-    return
-    return dispatch => {
-        (
-            fetch(baseUrl + `/api/bucket/${id}/`, {
-                'method': "delete",
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json',
-                    'Authorization': `Token ${token}`
-                }
-            })
-                .then((res) => res.json())
-                .then((res) => {
-                    alert("Bucket deleted Successfully....")
-                    dispatch(deleteBucket(id))
-                })
-        )
-    }
-}

@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { Row, Col, Button } from 'reactstrap';
 import { Link } from 'react-router-dom'
-import { loginApi, getAllBuckets ,deleteBuckets} from "../actions/userActions"
+import { loginApi, getAllBuckets} from "../actions/userActions"
 import { useDispatch, useSelector } from "react-redux";
 import moment from 'moment'
 
@@ -19,10 +19,6 @@ const AllBucket = () => {
         }
         dispatch(getAllBuckets());
     }, [])
-
-    const deleteBucket = (id) => {
-        dispatch(deleteBuckets(id))
-    }
 
 
     return (
@@ -52,8 +48,6 @@ const AllBucket = () => {
                         </Col>
                         <Col md={2} className="mt-3">
                             <Link to={`/bucket/${obj.id}`} className="btn btn-info">Edit</Link>{' '}
-                            {/* <Button color="warning"><i className="fas fa-trash-alt"></i> Delete</Button> */}
-                            <Button color="warning"  onClick={() => deleteBucket(obj.id)}>Delete</Button>
 
                         </Col>
                     </Row>
