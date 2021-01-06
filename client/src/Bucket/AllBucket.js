@@ -25,7 +25,7 @@ const AllBucket = () => {
 
     return (
         <div className="container">
-            <CustomNavbar title={'AllTasks'} />
+            <CustomNavbar title={'AllCategories'} />
             {  buckets.bucketlist && buckets.bucketlist.map((obj, i) => {
                 return (
                     <div className="card  mt-2 m-1" key={i}>
